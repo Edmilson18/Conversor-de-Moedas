@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 💱 Conversor de Moedas em TypeScript
 
 Um aplicativo de linha de comando (CLI) interativo e eficiente desenvolvido em **TypeScript** e **Node.js** que consome taxas de câmbio em tempo real de uma API externa para converter valores entre diferentes moedas.
@@ -39,6 +38,3 @@ Um aplicativo de linha de comando (CLI) interativo e eficiente desenvolvido em *
    ```bash
    git clone [https://github.com/seu-usuario/conversor-moedas.git](https://github.com/seu-usuario/conversor-moedas.git)
    cd conversor-moedas
-=======
-# Conversor-de-Moedas
->>>>>>> 0ecb99896938cf0bcd9ce13b16f829df847c4812
