@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f1f5f9;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: min(92%, 520px);
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12);
+}
+
+.header {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.icon {
+  font-size: 36px;
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 25px;
+}
+
+.header p {
+  margin: 0;
+  color: #64748b;
+}
+
+label {
+  display: block;
+  margin: 0 0 7px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 15px;
+}
+
+.currency-row {
+  display: grid;
+  grid-template-columns: 1fr 46px 1fr;
+  gap: 10px;
+  align-items: end;
+  margin-top: 18px;
+}
+
+.swap {
+  width: 46px;
+  height: 42px;
+  border: 0;
+  border-radius: 10px;
+  background: #e2e8f0;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.swap:hover {
+  background: #cbd5e1;
+}
+
+.convert {
+  width: 100%;
+  margin-top: 22px;
+  padding: 13px;
+  border: 0;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.convert:hover {
+  background: #1d4ed8;
+}
+
+.status {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 14px;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #eff6ff;
+  text-align: center;
+}
+
+.result-label {
+  margin: 0 0 8px;
+  color: #475569;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+#converted {
+  display: block;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+#rate {
+  margin: 0;
+  color: #475569;
+  font-size: 14px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 16px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 22px;
+  }
+
+  .currency-row {
+    grid-template-columns: 1fr;
+  }
+
+  .swap {
+    width: 100%;
+  }
+}

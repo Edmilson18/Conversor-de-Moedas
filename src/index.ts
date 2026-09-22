@@ -1,5 +1,5 @@
 import inquirer from 'inquirer';
-import { convertCurrency } from './converter';
+import { convertCurrency } from './converter.js';
 
 async function run() {
   const answers = await inquirer.prompt([

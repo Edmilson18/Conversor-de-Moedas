@@ -4,6 +4,11 @@ export interface ExchangeRateResponse {
   conversion_rates: Record<string, number>;
 }
 
+export interface SupportedCodesResponse {
+  result: string;
+  supported_codes: [string, string][];
+}
+
 export interface ConversionResult {
   from: string;
   to: string;

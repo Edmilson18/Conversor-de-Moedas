@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de Moedas</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <div class="header">
+        <span class="icon">💱</span>
+        <div>
+          <h1>Conversor de Moedas</h1>
+          <p>Converta valores usando a cotação atual.</p>
+        </div>
+      </div>
+
+      <form id="converter-form">
+        <label for="amount">Valor</label>
+        <input id="amount" name="amount" type="number" min="0" step="0.01" value="1" required>
+
+        <div class="currency-row">
+          <div>
+            <label for="from">De</label>
+            <select id="from" name="from" disabled aria-label="Moeda de origem"></select>
+          </div>
+
+          <button type="button" id="swap" class="swap" aria-label="Trocar moedas">⇄</button>
+
+          <div>
+            <label for="to">Para</label>
+            <select id="to" name="to" disabled aria-label="Moeda de destino"></select>
+          </div>
+        </div>
+
+        <button class="convert" type="submit">Converter</button>
+      </form>
+
+      <div id="status" class="status" hidden></div>
+
+      <section id="result" class="result" hidden>
+        <p class="result-label">Resultado</p>
+        <strong id="converted"></strong>
+        <p id="rate"></p>
+      </section>
+    </section>
+
+    <footer>&copy; 2026 Edmilson Carmo · TypeScript + Node.js</footer>
+  </main>
+
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

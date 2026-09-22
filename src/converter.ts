@@ -1,17 +1,48 @@
-import axios from 'axios';
-import dotenv from 'dotenv';
-import { ExchangeRateResponse, ConversionResult } from './types';
+import axios from "axios";
+import dotenv from "dotenv";
+import {
+  ExchangeRateResponse,
+  ConversionResult,
+  SupportedCodesResponse,
+} from "./types.js";
 
-// Carrega as variáveis do arquivo .env para o process.env
 dotenv.config();
 
 const API_KEY = process.env.API_KEY;
 
 if (!API_KEY) {
-  throw new Error('A variável de ambiente API_KEY não foi encontrada no arquivo .env!');
+  throw new Error("A variável de ambiente API_KEY não foi encontrada.");
 }
 
-const BASE_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/latest`;
+const BASE_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}`;
+
+export interface Currency {
+  code: string;
+  name: string;
+}
+
+export async function getCurrencies(): Promise<Currency[]> {
+  try {
+    const response = await axios.get<SupportedCodesResponse>(
+      `${BASE_URL}/codes`
+    );
+
+    if (
+      response.data.result !== "success" ||
+      !Array.isArray(response.data.supported_codes)
+    ) {
+      throw new Error("Resposta inválida da API de moedas.");
+    }
+
+    return response.data.supported_codes.map(([code, name]) => ({
+      code,
+      name,
+    }));
+  } catch (error) {
+    console.error("Erro ao carregar moedas:", error);
+    throw new Error("Não foi possível carregar as moedas.");
+  }
+}
 
 export async function convertCurrency(
   from: string,
@@ -19,12 +50,19 @@ export async function convertCurrency(
   amount: number
 ): Promise<ConversionResult> {
   try {
-    const response = await axios.get<ExchangeRateResponse>(`${BASE_URL}/${from.toUpperCase()}`);
-    const rates = response.data.conversion_rates;
+    const response = await axios.get<ExchangeRateResponse>(
+      `${BASE_URL}/latest/${from.toUpperCase()}`
+    );
 
+    if (response.data.result !== "success") {
+      throw new Error("A API não retornou uma cotação válida.");
+    }
+
+    const rates = response.data.conversion_rates;
     const targetRate = rates[to.toUpperCase()];
-    if (!targetRate) {
-      throw new Error(`Moeda de destino '${to}' não encontrada.`);
+
+    if (targetRate === undefined) {
+      throw new Error("Moeda de destino não encontrada.");
     }
 
     const convertedAmount = amount * targetRate;
@@ -37,6 +75,7 @@ export async function convertCurrency(
       rate: targetRate,
     };
   } catch (error) {
-    throw new Error(`Erro ao buscar taxas de câmbio: ${(error as Error).message}`);
+    console.error("Erro ao realizar conversão:", error);
+    throw new Error("Não foi possível realizar a conversão.");
   }
 }
