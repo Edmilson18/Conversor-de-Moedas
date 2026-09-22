@@ -2,11 +2,11 @@
   "name": "conversor-moedas",
   "version": "1.0.0",
   "description": "Conversor de moedas em tempo real usando TypeScript, Node.js e ExchangeRate-API.",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "tsx src/index.ts",
+    "start": "node dist/server.js",
     "build": "tsc",
-    "prod": "node dist/index.js",
+    "prod": "node dist/server.js",
     "server": "tsx src/server.ts",
     "dev": "tsx watch src/server.ts"
   },
