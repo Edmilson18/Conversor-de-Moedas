@@ -4,19 +4,25 @@ Aplicação de conversão de moedas usando **TypeScript**, **Node.js** e **Excha
 
 O projeto possui um backend HTTP e um frontend estático que pode ser publicado no GitHub Pages.
 
+## 🌐 Projeto online
+
+Acesse o conversor de moedas:
+
+https://edmilson18.github.io/Conversor-de-Moedas/
+
 ## Funcionalidades
 
-- Conversão entre as moedas disponíveis na ExchangeRate-API.
-- Lista de moedas carregada dinamicamente pela API.
-- Troca rápida entre moeda de origem e destino.
-- Tratamento de erros com mensagens em português no frontend.
-- API Key mantida somente no backend.
+* Conversão entre as moedas disponíveis na ExchangeRate-API.
+* Lista de moedas carregada dinamicamente pela API.
+* Troca rápida entre moeda de origem e destino.
+* Tratamento de erros com mensagens em português no frontend.
+* API Key mantida somente no backend.
 
 ## Estrutura
 
-- `src/` — backend/API em TypeScript.
-- `frontend/` — frontend estático para GitHub Pages.
-- `.env` — chave da ExchangeRate-API. Nunca publique esse arquivo.
+* `src/` — backend/API em TypeScript.
+* `frontend/` — frontend estático para GitHub Pages.
+* `.env` — chave da ExchangeRate-API. Nunca publique esse arquivo.
 
 ## Rodando localmente
 
@@ -48,7 +54,7 @@ No `frontend/config.js`, use:
 
 ```js
 window.APP_CONFIG = {
-  API_URL: "http://localhost:3000"
+    API_URL: "http://localhost:3000"
 };
 ```
 
@@ -74,9 +80,9 @@ Exemplo de corpo:
 
 ```json
 {
-  "from": "BRL",
-  "to": "USD",
-  "amount": 100
+    "from": "BRL",
+    "to": "USD",
+    "amount": 100
 }
 ```
 
@@ -88,7 +94,7 @@ Depois de publicar o backend, altere `frontend/config.js`:
 
 ```js
 window.APP_CONFIG = {
-  API_URL: "https://seu-backend.onrender.com"
+    API_URL: "https://seu-backend.onrender.com"
 };
 ```
 
