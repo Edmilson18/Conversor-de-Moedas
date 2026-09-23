@@ -2,33 +2,41 @@
   box-sizing: border-box;
 }
 
+html,
 body {
+  width: 100%;
+  min-height: 100%;
   margin: 0;
+}
+
+body {
   font-family: Arial, Helvetica, sans-serif;
   background: #f1f5f9;
   color: #0f172a;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  
+
   min-height: 100vh;
   min-height: 100dvh;
-  
-  padding: 20px 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  overflow-x: hidden;
 }
 
 .container {
-  width: min(92%, 520px);
-  margin: auto 0;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 .card {
+  width: 100%;
   background: white;
   border-radius: 18px;
   padding: 28px;
   box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12);
-  justify-content: center;
 }
 
 .header {
@@ -40,6 +48,7 @@ body {
 
 .icon {
   font-size: 36px;
+  flex-shrink: 0;
 }
 
 h1 {
@@ -62,6 +71,7 @@ label {
 input,
 select {
   width: 100%;
+  min-width: 0;
   padding: 12px;
   border: 1px solid #cbd5e1;
   border-radius: 10px;
@@ -71,7 +81,7 @@ select {
 
 .currency-row {
   display: grid;
-  grid-template-columns: 1fr 46px 1fr;
+  grid-template-columns: minmax(0, 1fr) 46px minmax(0, 1fr);
   gap: 10px;
   align-items: end;
   margin-top: 18px;
@@ -123,6 +133,7 @@ select {
   border-radius: 12px;
   background: #eff6ff;
   text-align: center;
+  overflow-wrap: anywhere;
 }
 
 .result-label {
@@ -130,19 +141,21 @@ select {
   color: #475569;
   font-size: 13px;
   text-transform: uppercase;
-  letter-spacing: .06em;
+  letter-spacing: 0.06em;
 }
 
 #converted {
   display: block;
   font-size: 28px;
   margin-bottom: 8px;
+  overflow-wrap: anywhere;
 }
 
 #rate {
   margin: 0;
   color: #475569;
   font-size: 14px;
+  overflow-wrap: anywhere;
 }
 
 footer {
@@ -152,16 +165,60 @@ footer {
   font-size: 13px;
 }
 
-@media (max-width: 480px) {
+/* Tablets e celulares */
+@media (max-width: 600px) {
+  body {
+    padding: 16px;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
   .card {
     padding: 22px;
   }
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .header {
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .icon {
+    font-size: 30px;
+  }
+
+  h1 {
+    font-size: 21px;
+  }
+
+  .header p {
+    font-size: 14px;
+  }
 
   .currency-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
   }
 
   .swap {
-    width: 100%;
+    width: 42px;
+    justify-self: center;
+  }
+
+  .convert {
+    margin-top: 20px;
   }
 }
